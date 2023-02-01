@@ -26,11 +26,33 @@ if(isset($_POST['login_btn'])){
         'user_email' => $user_email,
     ];
 
-    if($_SESSION['auth_role'] == 1){ //1.ผู้ดูแลร้านอาหาร
-        $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก ผู้ดูแลร้านอาหาร';
+    if($_SESSION['auth_role'] == '1' && $active = $data['active'] == '1'){ //1.ผู้ดูแลร้านอาหาร
+        $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก ผู้จัดการร้านอาหาร';
+        header('Location: ../manager/index.php');
+        exit(0);
+    }
+    elseif($_SESSION['auth_role'] == '2' && $active = $data['active'] == '1'){ //2.สมาชิกหรือลูกค้า
+        $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก สมาชิกหรือลูกค้า';
         header('Location: ../customer/index.php');
         exit(0);
     }
+    elseif($_SESSION['auth_role'] == '3' && $active = $data['active'] == '1'){ //3.ผู้ส่งอาหาร
+        $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก ผู้ส่งอาหาร';
+        header('Location: ../index.php');
+        exit(0);
+    }
+
+    elseif($_SESSION['auth_role'] == '4' && $active = $data['active'] == '1'){ //4.ผู้ดูแลระบบ
+        $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก ผู้ดูแลระบบ';
+        header('Location: ../admin/index.php');
+        exit(0);
+    }
+    else{
+        $_SESSION['message'] = 'กรุณารอการอนุมัติการเป็นสมาชิก';
+        header('Location: ../login.php');
+        exit(0);
+    }
+
 
   }else{
     $_SESSION['message'] = 'อีเมลล์หรือรหัสผ่านไม่ถูกต้อง';
