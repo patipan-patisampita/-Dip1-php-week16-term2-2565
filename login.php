@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php include_once("includes/header.php"); ?>
 <?php include_once("includes/navbar.php"); ?>
 
@@ -5,11 +7,14 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
             <div class="card shadow">
+
+            <?php include_once('message.php'); ?>
+
                 <div class="card-header bg-success fs-5 text-white">
                     ล็อกอินเข้าสู่ระบบ
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="controllers/logincode.php" method="post">
                         <div class="mb-3">
                             <label class="fs-5">อีเมลล์</label>
                             <input type="text" name="email" class="form-control" placeholder="Enter Your Email">
@@ -21,7 +26,7 @@
                         </div>
 
                         <div class="mb-3">
-                           <button class="btn btn-success">เข้าสู่ระบบ</button>
+                           <button type="submit" name="login_btn" class="btn btn-success">เข้าสู่ระบบ</button>
                         </div>
                     </form>
                 </div>
