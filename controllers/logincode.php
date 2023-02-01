@@ -26,8 +26,10 @@ if(isset($_POST['login_btn'])){
         'user_email' => $user_email,
     ];
 
-    if($_SESSION['auth_role'] == 1){
-
+    if($_SESSION['auth_role'] == 1){ //1.ผู้ดูแลร้านอาหาร
+        $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก ผู้ดูแลร้านอาหาร';
+        header('Location: ../customer/index.php');
+        exit(0);
     }
 
   }else{
