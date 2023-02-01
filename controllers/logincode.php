@@ -6,7 +6,7 @@ if(isset($_POST['login_btn'])){
    $email =  mysqli_real_escape_string($con,$_POST['email']);
    $password =  mysqli_real_escape_string($con,$_POST['password']);
 
-  $login_query = "SELECT * FROM users WHERE email = '$email' AND email = '$password'";
+  $login_query = "SELECT * FROM users WHERE email = '$email' AND password = '$password' LIMIT 1";
   $login_query_run = mysqli_query($con,$login_query); //ถ้ามี email และ email ในตาราง users จะตอบ true หรือ 1
 
   if(mysqli_num_rows($login_query_run)>0){
@@ -17,6 +17,7 @@ if(isset($_POST['login_btn'])){
         $role_as = $data['role_as'];
         $active = $data['active'];
     }
+    
     $_SESSION['auth'] = true;
     $_SESSION['auth_role'] = "$role_as";
     $_SESSION['auth_active'] = "$active";
@@ -26,23 +27,23 @@ if(isset($_POST['login_btn'])){
         'user_email' => $user_email,
     ];
 
-    if($_SESSION['auth_role'] == '1' && $active = $data['active'] == '1'){ //1.ผู้ดูแลร้านอาหาร
+    if($_SESSION['auth_role'] == '1' && $_SESSION['auth_active'] == '1'){ //1.ผู้ดูแลร้านอาหาร
         $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก ผู้จัดการร้านอาหาร';
         header('Location: ../manager/index.php');
         exit(0);
     }
-    elseif($_SESSION['auth_role'] == '2' && $active = $data['active'] == '1'){ //2.สมาชิกหรือลูกค้า
+    elseif($_SESSION['auth_role'] == '2' && $_SESSION['auth_active'] == '1'){ //2.สมาชิกหรือลูกค้า
         $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก สมาชิกหรือลูกค้า';
         header('Location: ../customer/index.php');
         exit(0);
     }
-    elseif($_SESSION['auth_role'] == '3' && $active = $data['active'] == '1'){ //3.ผู้ส่งอาหาร
+    elseif($_SESSION['auth_role'] == '3' && $_SESSION['auth_active'] == '1'){ //3.ผู้ส่งอาหาร
         $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก ผู้ส่งอาหาร';
         header('Location: ../index.php');
         exit(0);
     }
 
-    elseif($_SESSION['auth_role'] == '4' && $active = $data['active'] == '1'){ //4.ผู้ดูแลระบบ
+    elseif($_SESSION['auth_role'] == '4' && $_SESSION['auth_active'] == '1'){ //4.ผู้ดูแลระบบ
         $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก ผู้ดูแลระบบ';
         header('Location: ../admin/index.php');
         exit(0);
