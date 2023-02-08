@@ -3,7 +3,7 @@
 <?php
 if (isset($_SESSION['auth'])) {
     if (isset($_SESSION['message'])) {
-        $_SESSION['message'] = "คุณล็อกอินเข้าสู่ระบบ เรียบร้อยแล้ว";
+        $_SESSION['message'] = "คุณลงทะเบียนเข้าสู่ระบบ เรียบร้อยแล้ว";
     }
     header("Location: index.php");
     exit(0);
@@ -16,6 +16,7 @@ if (isset($_SESSION['auth'])) {
 <div class="container my-3">
     <div class="card shadow">
 
+        <?php include_once('includes/scripts.php'); ?>
         <?php include_once('message.php'); ?>
 
         <div class="card-header bg-success text-white fs-5">
@@ -94,4 +95,5 @@ if (isset($_SESSION['auth'])) {
     </div>
 </div>
 
+<?php include_once('includes/scripts.php'); ?>
 <?php include_once("includes/footer.php"); ?>
