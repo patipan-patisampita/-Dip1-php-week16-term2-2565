@@ -1,4 +1,4 @@
-<?php include_once('../config/authentication.php'); ?>
+<?php include_once('../config/authenticationManager.php'); ?>
 <?php include_once('../message.php'); ?>
 
 <?php
