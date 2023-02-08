@@ -15,7 +15,7 @@
                     <a class="nav-link" href="about.php"><i class="bi bi-bank2"></i> เกี่ยวกับ</a>
                 </li>
 
-                <?php if(isset($_SESSION['auth_user'])) : ?>
+                <?php if (isset($_SESSION['auth_user'])) : ?>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -27,18 +27,18 @@
 
                         <li>
                             <form action="./allcode.php" method="post">
-                                <button type="submit" name="logout_btn" class="" dropdown-item">ออกจากระบบ</button>
+                                <button type="submit" name="logout_btn" class="dropdown-item">ออกจากระบบ</button>
                             </form>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <hr class="dropdown-divider">
                         </li>
-
+                        <li><a class="dropdown-item" href="index.php">DevCat</a></li> -->
                     </ul>
                 </li>
 
-                <?php else: ?>
+                <?php else : ?>
 
                 <li class="nav-item">
                     <a class="nav-link" href="register.php"><i class="bi bi-stack"></i> ลงทะเบียน</a>
