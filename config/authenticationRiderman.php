@@ -8,7 +8,7 @@ if (!isset($_SESSION['auth'])) {
     header("Location: ../login.php");
     exit(0);
 } else {
-    if ($_SESSION['auth_role'] != "3") {
+    if ($_SESSION['auth_role'] == "3" || $_SESSION['auth_role'] == "4") {
         $_SESSION['message'] = "You are not Authorised as Riderman";
         header("Location: ../login.php");
         exit(0);
