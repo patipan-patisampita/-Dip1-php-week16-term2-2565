@@ -4,9 +4,9 @@
 if (isset($_SESSION['auth'])) {
    if(isset($_SESSION['message'])){
         $_SESSION['message'] = "คุณล็อกอินเข้าสู่ระบบ เรียบร้อยแล้ว";
-        header("Location: index.php");
-        exit(0);
    }
+    header("Location: index.php");
+    exit(0);
 }
 ?>
 
