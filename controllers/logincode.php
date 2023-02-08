@@ -39,7 +39,7 @@ if(isset($_POST['login_btn'])){
     }
     elseif($_SESSION['auth_role'] == '3' && $_SESSION['auth_active'] == '1'){ //3.ผู้ส่งอาหาร
         $_SESSION['message'] = 'ยินดีต้อนรับเข้าสู่ แดชบอร์ก ผู้ส่งอาหาร';
-        header('Location: ../index.php');
+        header('Location: ../riderman/index.php');
         exit(0);
     }
 
